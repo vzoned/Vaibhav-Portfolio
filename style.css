@@ -53,69 +53,7 @@ body {
     transform: translateY(-1px);
 }
 
-/* --- HIRE ME DOCK (HIDDEN INITIALLY) --- */
-.hire-me-container { position: relative; }
 
-.hire-dock {
-    position: absolute;
-    top: 110%; /* Just below the button */
-    right: 0;
-    display: flex;
-    gap: 12px;
-    padding: 10px 15px;
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    border: 1px solid var(--vz-border);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.hire-me-container:hover .hire-dock {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.dock-link {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-}
-
-.dock-link img {
-    width: 20px; /* Small icons as requested */
-    height: 20px;
-    filter: brightness(2);
-}
-
-.dock-link:hover {
-    transform: scale(1.3);
-}
-
-/* --- THE BLUR LOGIC --- */
-body:has(.hire-me-container:hover) section {
-    filter: blur(12px) brightness(0.6);
-    pointer-events: none;
-}
-section { transition: filter 0.5s ease; }
-
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 991px) {
-    .navbar-nav { text-align: center; padding: 20px 0; }
-    .nav-link { margin-left: 0; margin-bottom: 12px; }
-    .hire-btn { margin-left: 0; display: inline-block; }
-    .hire-dock { 
-        right: 50%; 
-        transform: translateX(50%) translateY(10px); 
-    }
-    .hire-me-container:hover .hire-dock { transform: translateX(50%) translateY(0); }
-}
 /* --- 3. HERO SECTION --- */
 .hero-section {
     position: relative;
