@@ -209,6 +209,15 @@ body {
 .video-placeholder { color: rgba(255, 255, 255, 0.6); letter-spacing: 3px; font-size: 11px; text-transform: uppercase; text-align: center; }
 .play-button { width: 80px; height: 80px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.3); position: relative; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; }
 .play-button::after { content: ''; margin-left: 5px; border-style: solid; border-width: 12px 0 12px 20px; border-color: transparent transparent transparent white; }
+.premium-glow {
+    box-shadow: 0 0 60px rgba(255, 255, 255, 0.03);
+    transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.premium-glow:hover {
+    box-shadow: 0 0 100px rgba(255, 255, 255, 0.12);
+    border-color: rgba(255,255,255,0.3);
+}
 
 /* --- 9. MOBILE RESPONSIVE (SECTION 1 UPDATES) --- */
 @media (max-width: 991px) {
