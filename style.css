@@ -14,54 +14,57 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
-
-/* --- 2. NAVIGATION --- */
+/* --- 2. NAVIGATION REFINED --- */
 .navbar {
     background: rgba(5, 7, 10, 0.75);
     backdrop-filter: blur(25px) saturate(180%);
     border-bottom: 1px solid var(--vz-border);
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    z-index: 1000;
+    z-index: 2000; /* Higher z-index to stay above blur */
 }
+
 .navbar-hidden { transform: translateY(-100%); }
-.logo-glow img { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.45)); }
-.nav-link { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.5) !important; margin-left: 25px; transition: 0.3s ease; }
+
+.nav-link { 
+    font-size: 10px; 
+    text-transform: uppercase; 
+    letter-spacing: 0.15em; 
+    color: rgba(255, 255, 255, 0.5) !important; 
+    margin-left: 15px; /* Reduced margin for better fit */
+    transition: 0.3s ease; 
+}
+
 .nav-link:hover { color: white !important; }
 
-/* --- HIRE ME BUTTON & BLUR LOGIC --- */
-
-/* 1. The main button style */
+/* --- HIRE ME BUTTON & POPUP --- */
 .hire-btn {
     background: var(--vz-purple);
     color: white !important;
-    padding: 8px 20px !important;
+    padding: 6px 18px !important; /* Slimmer button */
     border-radius: 50px;
-    margin-left: 30px;
+    margin-left: 20px;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    font-size: 10px;
     transition: 0.3s ease;
 }
 
-/* 2. Container for the pop-up options */
-.hire-me-container {
-    position: relative;
-}
+.hire-me-container { position: relative; }
 
 .hire-options {
     position: absolute;
     top: 100%;
     right: 0;
-    width: 200px;
-    background: rgba(10, 10, 10, 0.9);
+    width: 180px;
+    background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     border: 1px solid var(--vz-border);
-    border-radius: 15px;
-    padding: 10px;
-    margin-top: 15px;
+    border-radius: 12px;
+    padding: 8px;
+    margin-top: 10px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s ease;
 }
 
 .hire-me-container:hover .hire-options {
@@ -70,23 +73,22 @@ body {
     transform: translateY(0);
 }
 
-/* 3. Individual link styles inside pop-up */
 .hire-link {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px;
+    gap: 10px;
+    padding: 10px;
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    border-radius: 10px;
-    transition: 0.3s;
+    font-size: 10px;
+    transition: 0.2s;
 }
 
+/* Icon Size Refined to ~20px */
 .hire-link img {
-    width: 18px;
-    filter: brightness(2);
+    width: 20px; 
+    height: 20px;
+    filter: brightness(1.5);
 }
 
 .hire-link:hover {
@@ -94,25 +96,26 @@ body {
     color: white;
 }
 
-/* 4. THE MAGIC BLUR: Blurs sections when HIRE ME is hovered */
-/* This selects everything EXCEPT the navbar when the hire container is hovered */
+/* --- THE BLUR LOGIC --- */
+/* Only blurs the content sections, leaves navbar clear */
 body:has(.hire-me-container:hover) section {
-    filter: blur(15px);
-    transition: filter 0.5s ease;
+    filter: blur(10px) brightness(0.7);
+    pointer-events: none; /* Prevents clicking content while blurred */
 }
 
-/* Ensure sections have transition even when not hovered */
-section {
-    transition: filter 0.5s ease;
-}
+section { transition: filter 0.4s ease; }
 
 /* Mobile Tweaks */
 @media (max-width: 991px) {
-    .hire-btn { margin-left: 0; margin-top: 20px; text-align: center; }
-    .hire-options { right: 50%; transform: translateX(50%) translateY(10px); }
-    .hire-me-container:hover .hire-options { transform: translateX(50%) translateY(0); }
+    .navbar-nav { padding: 20px 0; text-align: center; }
+    .nav-link { margin-left: 0; margin-bottom: 10px; }
+    .hire-btn { margin-left: 0; display: inline-block; }
+    .hire-options { 
+        right: 50%; 
+        transform: translateX(50%) translateY(10px); 
+        width: 100%; /* Full width on mobile for easier tapping */
+    }
 }
-
 /* --- 3. HERO SECTION --- */
 .hero-section {
     position: relative;
