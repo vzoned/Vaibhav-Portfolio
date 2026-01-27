@@ -28,6 +28,91 @@ body {
 .nav-link { font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255, 255, 255, 0.5) !important; margin-left: 25px; transition: 0.3s ease; }
 .nav-link:hover { color: white !important; }
 
+/* --- HIRE ME BUTTON & BLUR LOGIC --- */
+
+/* 1. The main button style */
+.hire-btn {
+    background: var(--vz-purple);
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 50px;
+    margin-left: 30px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    transition: 0.3s ease;
+}
+
+/* 2. Container for the pop-up options */
+.hire-me-container {
+    position: relative;
+}
+
+.hire-options {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    background: rgba(10, 10, 10, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--vz-border);
+    border-radius: 15px;
+    padding: 10px;
+    margin-top: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hire-me-container:hover .hire-options {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 3. Individual link styles inside pop-up */
+.hire-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.hire-link img {
+    width: 18px;
+    filter: brightness(2);
+}
+
+.hire-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+/* 4. THE MAGIC BLUR: Blurs sections when HIRE ME is hovered */
+/* This selects everything EXCEPT the navbar when the hire container is hovered */
+body:has(.hire-me-container:hover) section {
+    filter: blur(15px);
+    transition: filter 0.5s ease;
+}
+
+/* Ensure sections have transition even when not hovered */
+section {
+    transition: filter 0.5s ease;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 991px) {
+    .hire-btn { margin-left: 0; margin-top: 20px; text-align: center; }
+    .hire-options { right: 50%; transform: translateX(50%) translateY(10px); }
+    .hire-me-container:hover .hire-options { transform: translateX(50%) translateY(0); }
+}
+
 /* --- 3. HERO SECTION --- */
 .hero-section {
     position: relative;
