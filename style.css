@@ -171,22 +171,37 @@ body {
     z-index: 1;
 }
 
+/* Initial state of the image (Hidden/Blur/BW) */
 .hero-img-full {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: blur(20px) grayscale(100%); /* Initial State */
-    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), filter 1.5s ease;
     
-    /* 40% Left Edge Fade to Transparency */
+    /* Starting point: Blurred, B&W, and pushed 100px to the right */
+    filter: blur(20px) grayscale(100%);
+    transform: translateX(100px); 
+    
     mask-image: linear-gradient(to right, transparent 0%, black 40%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
+    
+    /* Smooth transition for the hover zoom effect later */
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Hover Zoom 10% */
+/* On mobile, we change the mask direction */
+@media (max-width: 991px) {
+    .hero-img-full {
+        mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%);
+        transform: translateY(50px); /* Slide up on mobile instead of right */
+    }
+}
+
+/* Only triggers zoom AFTER the intro animation is likely done */
 .hero-image-wrapper:hover .hero-img-full {
-    transform: scale(1.1);
+    /* Since GSAP uses 'transform', we use scale here */
+    transform: scale(1.1) !important; 
 }
 
 /* Social Dock Positioned over Image */

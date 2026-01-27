@@ -32,18 +32,32 @@
                 </div>
             </div>
         </nav>
+<section class="hero-section">
+    <div class="hero-image-wrapper">
+        <img src="your-pic.jpg" alt="Vaibhav Patil" class="hero-img-full">
+        
+        <div class="social-dock">
+            <a href="https://linkedin.com" target="_blank" class="dock-item">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+                                </a>
+                                <a href="https://twitter.com" target="_blank" class="dock-item">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="dock-item">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+                                </a>
+        </div>
+    </div>
 
-        <section class="hero-section">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7">
-
-                        <span class="sub-services">Video Editor • Graphic Designer • Social Media Manager • Content
-                            Creator</span>
-                        <h1 class="tall-heading dynamic-glow">VAIBHAV<br>PATIL</h1>
-                        <div class="software-carousel-container">
-                            <div class="software-track">
-                                <img src="logo1.png" alt="Ae"></img>
+    <div class="container hero-content">
+        <div class="row">
+            <div class="col-lg-7">
+                <span class="sub-services">Video Editor • Graphic Designer • Social Media Manager • Content Creator</span>
+                <h1 class="tall-heading dynamic-glow">VAIBHAV<br>PATIL</h1>
+                
+                <div class="software-carousel-container">
+                    <div class="software-track">
+                        <img src="logo1.png" alt="Ae"></img>
                                 <img src="logo2.png" alt="Pr"></img>
                                 <img src="logo3.png" alt="Ps"></img>
                                 <img src="logo4.png" alt="Ai"></img>
@@ -53,47 +67,14 @@
                                 <img src="logo8.png" alt="ChatGPT"></img>
                                 <img src="logo9.png" alt="Gemini"></img>
                                 <img src="logo10.png" alt="Maya"></img>
-                            </div>
-                        </div>
-                    </div>
-                    <section class="hero-section">
-    <div class="hero-image-wrapper">
-        <img src="your-pic.jpg" alt="Vaibhav Patil" class="hero-img-full">
-        
-        <div class="social-dock">
-            <a href="https://linkedin.com" target="_blank" class="dock-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-            </a>
-            <a href="https://twitter.com" target="_blank" class="dock-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
-            </a>
-            <a href="https://instagram.com" target="_blank" class="dock-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-            </a>
-        </div>
-    </div>
-
-    <div class="container hero-content">
-        <div class="row">
-            <div class="col-lg-7">
-                <span class="sub-services">Video Editor • Graphic Designer • Social Media Manager • Creative Head • Content Creator</span>
-                <h1 class="tall-heading dynamic-glow">VAIBHAV<br>PATIL</h1>
-                
-                <div class="software-carousel-container">
-                    <div class="software-track">
-                        <img src="logo1.png" alt="Pr">
-                        <img src="logo2.png" alt="Ae">
-                        <img src="logo3.png" alt="Ps">
-                        <img src="logo4.png" alt="Ai">
-                        <img src="logo5.png" alt="Blender">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-                </div>
-            </div>
-        </section>
+</section>
+       
+   
 
         <section id="work" class="carousel-section">
             <div class="container text-center mb-5">
@@ -128,7 +109,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-
+// --- Cinematic Image Intro ---
+// This runs as soon as the page loads
+window.addEventListener('load', () => {
+    gsap.to(".hero-img-full", {
+        filter: "blur(0px) grayscale(0%)", // Becomes sharp and colored
+        x: 0,                             // Moves to its final position (0)
+        y: 0,                             // Resets mobile Y position
+        duration: 1,                      // Exactly 1 second
+        ease: "power2.out"                // Smooth deceleration
+    });
+});
         // --- Dynamic Navbar Logic ---
         let lastScrollY = window.scrollY;
         const navbar = document.querySelector('.navbar');
@@ -214,16 +205,16 @@
             });
         });
         // --- Hero Image Intro Animation ---
-gsap.to(".hero-img-full", {
-    filter: "blur(0px) grayscale(0%)", // Removes blur and adds color
-    x: 50, // Pans 50px to the right
-    duration: 2.5,
-    delay: 0.5,
-    ease: "power2.out"
-});
+        gsap.to(".hero-img-full", {
+            filter: "blur(0px) grayscale(0%)", // Removes blur and adds color
+            x: 50, // Pans 50px to the right
+            duration: 2.5,
+            delay: 0.5,
+            ease: "power2.out"
+        });
 
-// Note: Ensure the image starts with transform: translateX(-50px) 
-// in CSS to make the "pan" visible
+        // Note: Ensure the image starts with transform: translateX(-50px) 
+        // in CSS to make the "pan" visible
     </script>
 </body>
 
