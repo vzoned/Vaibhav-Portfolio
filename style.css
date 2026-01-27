@@ -168,7 +168,8 @@ section { transition: filter 0.5s ease; }
 
 /* Static Center Card */
 .center-card {
-    position: absolute; width: 300px; height: 420px; z-index: 100; pointer-events: none;
+    position: absolute; width: 940px;
+    height: 1080px z-index: 100; pointer-events: none;
     transform: translateZ(150px) scale(1.1); /* Pushed forward */
 }
 .center-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
