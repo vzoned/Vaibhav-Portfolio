@@ -120,6 +120,13 @@ body {
 .dock-item:hover { transform: scale(1.4) translateY(-10px); background: rgba(255, 255, 255, 0.1); }
 
 /* --- 7. 3D GALLERY --- */
+.section-label {
+    font-family: 'Bebas Neue';
+    letter-spacing: 6px;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+    opacity: 0.8;
+}
 .carousel-section { 
     min-height: 100vh; /* Changed from 120vh to keep it in view */
     display: flex; 
