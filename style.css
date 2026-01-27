@@ -107,16 +107,43 @@ section { transition: filter 0.5s ease; }
 }
 .hero-image-wrapper:hover .hero-img-full { transform: scale(1.1) !important; }
 
-/* Software Carousel */
+/* --- 5. SOFTWARE CAROUSEL (Seamless Loop) --- */
 .software-carousel-container {
-    margin-top: 40px; width: 100%; max-width: 500px; overflow: hidden; position: relative;
+    margin-top: 40px; 
+    width: 100%; 
+    max-width: 500px; 
+    overflow: hidden; 
+    position: relative;
+    /* Gradient mask for fading edges */
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
-.software-track { display: flex; gap: 40px; animation: scrollLogos 25s linear infinite; align-items: center; }
-.software-track img { height: 32px; filter: grayscale(1) brightness(2.5); opacity: 0.5; transition: 0.3s; }
-.software-track img:hover { filter: grayscale(0) brightness(1); opacity: 1; }
-@keyframes scrollLogos { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+
+.software-track { 
+    display: flex; 
+    gap: 40px; 
+    width: max-content; /* Forces all logos onto one long line */
+    animation: scrollLogos 20s linear infinite; /* Smooth continuous speed */
+    align-items: center; 
+}
+
+.software-track img { 
+    height: 32px; /* Adjusted size for clean look */
+    filter: grayscale(1) brightness(2.5); 
+    opacity: 0.5; 
+    transition: 0.3s; 
+}
+
+.software-track img:hover { 
+    filter: grayscale(0) brightness(1); 
+    opacity: 1; 
+}
+
+/* The Math: Move exactly 50% (the width of one full set) then reset to 0 */
+@keyframes scrollLogos { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
+}
 
 /* Social Dock (Hero) */
 .social-dock {
