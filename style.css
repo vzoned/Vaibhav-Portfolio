@@ -134,9 +134,9 @@ body {
 /* Center Image - Only transformations, no container styling */
 .center-card {
     position: absolute;
-    width: 300px; /* Scaled up as requested */
-    height: 420px; 
-    z-index: 100;
+    width: 405px; /* Scaled up as requested */
+    height: 540px; 
+    z-index: -100;
     pointer-events: none;
     
     /* Pushes the image forward in Z-space and scales it up */
