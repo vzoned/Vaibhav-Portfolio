@@ -94,8 +94,6 @@ body {
     max-width: 500px;
     overflow: hidden;
     position: relative;
-    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 .software-track { display: flex; gap: 45px; animation: scrollLogos 25s linear infinite; align-items: center; }
 .software-track img { height: 32px; filter: grayscale(1) brightness(2.5); opacity: 0.5; transition: 0.3s ease; }
