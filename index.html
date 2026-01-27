@@ -56,24 +56,41 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5 text-center">
-                        <div class="hero-image-container">
-                            <img src="your-pic.jpg" alt="Vaibhav Patil" class="hero-img">
-                            <div class="glass-badge"><span class="accent">●</span> Available for Projects</div>
+                    <section class="hero-section">
+    <div class="hero-image-wrapper">
+        <img src="your-pic.jpg" alt="Vaibhav Patil" class="hero-img-full">
+        
+        <div class="social-dock">
+            <a href="https://linkedin.com" target="_blank" class="dock-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+            </a>
+            <a href="https://twitter.com" target="_blank" class="dock-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
+            </a>
+            <a href="https://instagram.com" target="_blank" class="dock-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+            </a>
+        </div>
+    </div>
 
-                            <div class="social-dock">
-                                <a href="www.linkedin.com/in/vaibhav-patil-681743156" target="_blank" class="dock-item">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
-                                </a>
-                                <a href="https://twitter.com" target="_blank" class="dock-item">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
-                                </a>
-                                <a href="https://www.instagram.com/__paav/" target="_blank" class="dock-item">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-                                </a>
-                            </div>
-                        </div>
+    <div class="container hero-content">
+        <div class="row">
+            <div class="col-lg-7">
+                <span class="sub-services">Video Editor • Graphic Designer • Social Media Manager • Creative Head • Content Creator</span>
+                <h1 class="tall-heading dynamic-glow">VAIBHAV<br>PATIL</h1>
+                
+                <div class="software-carousel-container">
+                    <div class="software-track">
+                        <img src="logo1.png" alt="Pr">
+                        <img src="logo2.png" alt="Ae">
+                        <img src="logo3.png" alt="Ps">
+                        <img src="logo4.png" alt="Ai">
+                        <img src="logo5.png" alt="Blender">
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
                 </div>
             </div>
         </section>
@@ -196,6 +213,17 @@
                 }
             });
         });
+        // --- Hero Image Intro Animation ---
+gsap.to(".hero-img-full", {
+    filter: "blur(0px) grayscale(0%)", // Removes blur and adds color
+    x: 50, // Pans 50px to the right
+    duration: 2.5,
+    delay: 0.5,
+    ease: "power2.out"
+});
+
+// Note: Ensure the image starts with transform: translateX(-50px) 
+// in CSS to make the "pan" visible
     </script>
 </body>
 
