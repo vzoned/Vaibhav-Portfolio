@@ -95,8 +95,8 @@ body {
     overflow: hidden;
     position: relative;
 }
-.software-track { display: flex; gap: 45px; animation: scrollLogos 25s linear infinite; align-items: center; }
-.software-track img { height: 32px; filter: grayscale(1) brightness(2.5); opacity: 0.5; transition: 0.3s ease; }
+.software-track { display: flex; gap: 30px; animation: scrollLogos 25s linear infinite; align-items: center; }
+.software-track img { height: 50px; filter: brightness(2.5); opacity: 0.5; transition: 0.3s ease; }
 @keyframes scrollLogos { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
 /* --- 6. SOCIAL DOCK --- */
