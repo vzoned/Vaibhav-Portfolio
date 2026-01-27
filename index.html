@@ -108,6 +108,27 @@
             gsap.from(".tall-heading", { opacity: 0, x: -100, duration: 1.8, ease: "expo.out" });
         });
 
+        // 1. Cinematic Intro (Handles Desktop Pan-Right and Mobile Pan-Up)
+window.addEventListener('load', () => {
+    const isMobile = window.innerWidth <= 991;
+
+    gsap.to(".hero-img-full", {
+        filter: "blur(0px) grayscale(0%)",
+        x: 0,
+        y: 0, // Moves back to original Y position (Pan Up finish)
+        duration: 1.2,
+        ease: "power2.out"
+    });
+
+    gsap.from(".tall-heading", {
+        opacity: 0,
+        y: isMobile ? -20 : 0, // Subtle slide down on mobile
+        x: isMobile ? 0 : -100,
+        duration: 1.5,
+        ease: "expo.out"
+    });
+});
+
         // 2. Dynamic Navbar
         let lastScrollY = window.scrollY;
         const navbar = document.querySelector('.navbar');
