@@ -14,15 +14,14 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
-/* --- 2. NAVIGATION REFINED --- */
+/* --- NAVBAR BASE --- */
 .navbar {
     background: rgba(5, 7, 10, 0.75);
     backdrop-filter: blur(25px) saturate(180%);
     border-bottom: 1px solid var(--vz-border);
     transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-    z-index: 2000; /* Higher z-index to stay above blur */
+    z-index: 2000;
 }
-
 .navbar-hidden { transform: translateY(-100%); }
 
 .nav-link { 
@@ -30,91 +29,92 @@ body {
     text-transform: uppercase; 
     letter-spacing: 0.15em; 
     color: rgba(255, 255, 255, 0.5) !important; 
-    margin-left: 15px; /* Reduced margin for better fit */
+    margin-left: 18px;
     transition: 0.3s ease; 
 }
-
 .nav-link:hover { color: white !important; }
 
-/* --- HIRE ME BUTTON & POPUP --- */
+/* --- HIRE ME CAPSULE BUTTON --- */
 .hire-btn {
-    background: var(--vz-purple);
+    /* Gradient: Top (Logo Purple) to Bottom (20% Darker) */
+    background: linear-gradient(to bottom, #9d50bb 0%, #7d3f96 100%) !important;
     color: white !important;
-    padding: 6px 18px !important; /* Slimmer button */
+    padding: 8px 22px !important;
     border-radius: 50px;
-    margin-left: 20px;
-    font-weight: 600;
+    margin-left: 25px;
+    font-weight: 700;
     font-size: 10px;
-    transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(157, 80, 187, 0.3);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
+.hire-btn:hover {
+    box-shadow: 0 6px 20px rgba(157, 80, 187, 0.5);
+    transform: translateY(-1px);
+}
+
+/* --- HIRE ME DOCK (HIDDEN INITIALLY) --- */
 .hire-me-container { position: relative; }
 
-.hire-options {
+.hire-dock {
     position: absolute;
-    top: 100%;
+    top: 110%; /* Just below the button */
     right: 0;
-    width: 180px;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(20px);
+    display: flex;
+    gap: 12px;
+    padding: 10px 15px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
     border: 1px solid var(--vz-border);
-    border-radius: 12px;
-    padding: 8px;
-    margin-top: 10px;
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.hire-me-container:hover .hire-options {
+.hire-me-container:hover .hire-dock {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-.hire-link {
+.dock-link {
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: 10px;
-    transition: 0.2s;
+    justify-content: center;
+    transition: transform 0.3s ease;
 }
 
-/* Icon Size Refined to ~20px */
-.hire-link img {
-    width: 20px; 
+.dock-link img {
+    width: 20px; /* Small icons as requested */
     height: 20px;
-    filter: brightness(1.5);
+    filter: brightness(2);
 }
 
-.hire-link:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
+.dock-link:hover {
+    transform: scale(1.3);
 }
 
 /* --- THE BLUR LOGIC --- */
-/* Only blurs the content sections, leaves navbar clear */
 body:has(.hire-me-container:hover) section {
-    filter: blur(10px) brightness(0.7);
-    pointer-events: none; /* Prevents clicking content while blurred */
+    filter: blur(12px) brightness(0.6);
+    pointer-events: none;
 }
+section { transition: filter 0.5s ease; }
 
-section { transition: filter 0.4s ease; }
-
-/* Mobile Tweaks */
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 991px) {
-    .navbar-nav { padding: 20px 0; text-align: center; }
-    .nav-link { margin-left: 0; margin-bottom: 10px; }
+    .navbar-nav { text-align: center; padding: 20px 0; }
+    .nav-link { margin-left: 0; margin-bottom: 12px; }
     .hire-btn { margin-left: 0; display: inline-block; }
-    .hire-options { 
+    .hire-dock { 
         right: 50%; 
         transform: translateX(50%) translateY(10px); 
-        width: 100%; /* Full width on mobile for easier tapping */
     }
+    .hire-me-container:hover .hire-dock { transform: translateX(50%) translateY(0); }
 }
 /* --- 3. HERO SECTION --- */
 .hero-section {
