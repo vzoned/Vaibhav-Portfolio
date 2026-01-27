@@ -96,7 +96,7 @@ body {
     position: relative;
 }
 .software-track { display: flex; gap: 30px; animation: scrollLogos 25s linear infinite; align-items: center; }
-.software-track img { height: 50px; opacity: 0.5; transition: 0.3s ease; }
+.software-track img { height: 60px; opacity: 0.5; transition: 0.3s ease; }
 @keyframes scrollLogos { from { transform: translateX(0); } to { transform: translateX(-100%); } }
 
 /* --- 6. SOCIAL DOCK --- */
