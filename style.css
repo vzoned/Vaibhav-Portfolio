@@ -254,3 +254,199 @@ section { transition: filter 0.5s ease; }
     .card-item:nth-child(6) { transform: rotateY(257.1deg) translateZ(300px); }
     .card-item:nth-child(7) { transform: rotateY(308.5deg) translateZ(300px); }
 }
+
+/* --- 10. SERVICES SECTION --- */
+.services-section {
+    padding: 120px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--vz-border);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(157, 80, 187, 0.5); /* Purple border on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 
+                0 0 20px rgba(157, 80, 187, 0.2); /* Purple Glow */
+}
+
+/* Icon Styling */
+.icon-box {
+    width: 70px;
+    height: 70px;
+    background: rgba(157, 80, 187, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    transition: 0.3s;
+}
+
+.icon-box img {
+    width: 35px;
+    filter: brightness(0) invert(1); /* Makes icons white */
+    transition: 0.3s;
+}
+
+.service-card:hover .icon-box {
+    background: var(--vz-purple);
+    transform: scale(1.1);
+}
+
+/* Typography */
+.service-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.service-card p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    .service-card { padding: 30px 20px; margin-bottom: 15px; }
+}
+
+/* --- 11. SCALEUP FEATURE SECTION --- */
+.scaleup-section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.scaleup-visual {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--vz-border);
+}
+
+.scaleup-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: 0.5s ease;
+}
+
+.scaleup-visual:hover img {
+    transform: scale(1.05);
+}
+
+.floating-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--vz-purple);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.section-desc {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.scaleup-list {
+    list-style: none;
+    padding: 0;
+}
+
+.scaleup-list li {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* --- 12. TESTIMONIALS SECTION --- */
+.testimonials-section {
+    padding: 100px 0 150px; /* Extra padding at bottom */
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--vz-border);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: left;
+    transition: 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.review-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.stars {
+    color: #ffd700; /* Gold color for stars */
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.review-card p {
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.client-info img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    filter: grayscale(1); /* Keeps it classy */
+}
+
+.client-info h5 {
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 700;
+    color: white;
+}
+
+.client-info span {
+    font-size: 0.75rem;
+    color: var(--vz-purple);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991px) {
+    .scaleup-visual { margin-bottom: 30px; }
+    .section-desc { font-size: 0.95rem; }
+}
