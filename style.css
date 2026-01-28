@@ -450,3 +450,162 @@ section { transition: filter 0.5s ease; }
     .scaleup-visual { margin-bottom: 30px; }
     .section-desc { font-size: 0.95rem; }
 }
+
+/* --- 13. EDITORIAL STORY SECTION --- */
+.editorial-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 0;
+}
+
+/* Background Handling */
+.editorial-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('design1.jpg') center/cover no-repeat; /* Uses one of your images as bg */
+    filter: blur(20px) brightness(0.4);
+    z-index: 0;
+}
+
+.overlay-gradient {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+    z-index: 1;
+}
+
+/* Story UI (Top Bar) */
+.story-ui-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 40px;
+}
+
+.ui-text {
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.center-text { 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+
+.ui-colors { display: flex; gap: 5px; }
+.swatch { width: 15px; height: 15px; }
+.swatch.green { background: #ccff00; }
+.swatch.white { background: #fff; }
+.swatch.orange { background: #ff9900; }
+
+/* Main Typography */
+.editorial-content { text-align: center; position: relative; }
+
+.editorial-title {
+    font-family: 'Times New Roman', serif; /* Serif font for editorial look */
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: #ccff00; /* Acid Green */
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
+}
+
+.editorial-desc {
+    max-width: 600px;
+    margin: 0 auto 50px;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.5;
+}
+
+/* THE COLLAGE (Fan Effect) */
+.collage-wrapper {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Aligns items to bottom */
+}
+
+/* The Cards Behind */
+.fan-card {
+    position: absolute;
+    top: 50px;
+    width: 160px;
+    height: 280px;
+    border: 2px solid white;
+    filter: grayscale(100%);
+    transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.fan-card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Rotations for the "Fan" */
+.pos-1 { transform: translateX(-180px) rotate(-15deg) translateY(20px); z-index: 1; }
+.pos-2 { transform: translateX(-70px) rotate(-5deg); z-index: 2; }
+.pos-3 { transform: translateX(70px) rotate(5deg); z-index: 2; }
+.pos-4 { transform: translateX(180px) rotate(15deg) translateY(20px); z-index: 1; }
+
+/* Interactive Hover: Fan spreads out */
+.collage-wrapper:hover .pos-1 { transform: translateX(-220px) rotate(-20deg); }
+.collage-wrapper:hover .pos-2 { transform: translateX(-90px) rotate(-10deg); }
+.collage-wrapper:hover .pos-3 { transform: translateX(90px) rotate(10deg); }
+.collage-wrapper:hover .pos-4 { transform: translateX(220px) rotate(20deg); }
+
+/* Main Subject (Foreground) */
+.main-subject {
+    position: relative;
+    z-index: 10;
+    width: 350px;
+    height: 400px; /* Adjust height based on your image */
+    overflow: visible;
+    transform: translateY(50px); /* Pushes it down slightly */
+}
+
+.main-subject img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Change to 'contain' if using a transparent PNG cutout */
+    border-radius: 20px; /* Optional: remove if using a cutout */
+    filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
+    transition: 0.3s;
+}
+
+.main-subject:hover img { transform: scale(1.05); }
+
+/* Footer Labels */
+.story-ui-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .editorial-title { font-size: 3rem; }
+    .fan-card { width: 100px; height: 180px; top: 100px; }
+    .pos-1 { transform: translateX(-100px) rotate(-15deg); }
+    .pos-2 { transform: translateX(-40px) rotate(-5deg); }
+    .pos-3 { transform: translateX(40px) rotate(5deg); }
+    .pos-4 { transform: translateX(100px) rotate(15deg); }
+    .main-subject { width: 250px; height: 300px; }
+    .center-text { display: none; } /* Hide center text on small screens */
+}
