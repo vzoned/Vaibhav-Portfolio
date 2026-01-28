@@ -65,3 +65,60 @@ gsap.utils.toArray('section').forEach(section => {
         }
     });
 });
+
+// --- 6. Editorial Z-Axis & Parallax Animation ---
+// Note: Ensure GSAP ScrollTrigger is registered
+
+const editorialSection = document.querySelector('.editorial-section');
+const collageWrapper = document.querySelector('.collage-wrapper3d');
+
+if (editorialSection && collageWrapper) {
+    // 1. The Main Z-Axis Zoom Entry
+    gsap.fromTo(collageWrapper, 
+        { 
+            scale: 0.5,       // Start small (looks far away)
+            opacity: 0,       // Start invisible
+            z: -500,          // Start pushed back in Z-space
+            rotationX: 20     // Slight tilt for 3D effect
+        },
+        {
+            scale: 1,
+            opacity: 1,
+            z: 0,
+            rotationX: 0,
+            duration: 1.5,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: editorialSection,
+                start: "top 75%",    // Starts animation when section hits viewport
+                end: "center center",
+                scrub: 1,            // Smooth scrubbing (reverses on scroll up)
+                toggleActions: "play reverse play reverse"
+            }
+        }
+    );
+
+    // 2. Parallax Effect (Elements moving at different speeds)
+    // Moves the video cards slightly differently than the main subject
+    gsap.to(".video-card", {
+        y: -50, // Moves up slightly as you scroll down
+        ease: "none",
+        scrollTrigger: {
+            trigger: editorialSection,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+        }
+    });
+
+    gsap.to(".main-subject-3d", {
+        y: 20, // Moves down slightly (opposing motion creates depth)
+        ease: "none",
+        scrollTrigger: {
+            trigger: editorialSection,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+        }
+    });
+}
