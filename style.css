@@ -451,161 +451,88 @@ section { transition: filter 0.5s ease; }
     .section-desc { font-size: 0.95rem; }
 }
 
-/* --- 13. EDITORIAL STORY SECTION --- */
+/* --- 13. DYNAMIC EDITORIAL SECTION --- */
 .editorial-section {
     position: relative;
-    min-height: 100vh;
+    height: 150vh; /* Taller to allow scroll animation time */
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 60px 0;
+    background: #05070a;
 }
 
-/* Background Handling */
-.editorial-bg {
+/* Background Fade Upward */
+.editorial-bg-fade {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: url('design1.jpg') center/cover no-repeat; /* Uses one of your images as bg */
-    filter: blur(20px) brightness(0.4);
+    background: radial-gradient(circle at center, #1a1a1a 0%, #05070a 70%);
+    /* This creates the fade from solid bottom to transparent top */
+    mask-image: linear-gradient(to top, black 20%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to top, black 20%, transparent 100%);
     z-index: 0;
 }
 
-.overlay-gradient {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
-    z-index: 1;
-}
-
-/* Story UI (Top Bar) */
-.story-ui-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    margin-bottom: 40px;
-}
-
-.ui-text {
-    font-size: 12px;
-    font-family: 'Inter', sans-serif;
-    color: rgba(255,255,255,0.8);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.center-text { 
-    position: absolute; 
-    left: 50%; 
-    transform: translateX(-50%); 
-}
-
-.ui-colors { display: flex; gap: 5px; }
-.swatch { width: 15px; height: 15px; }
-.swatch.green { background: #ccff00; }
-.swatch.white { background: #fff; }
-.swatch.orange { background: #ff9900; }
-
-/* Main Typography */
-.editorial-content { text-align: center; position: relative; }
-
-.editorial-title {
-    font-family: 'Times New Roman', serif; /* Serif font for editorial look */
-    font-size: clamp(3rem, 8vw, 6rem);
-    color: #ccff00; /* Acid Green */
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    line-height: 1;
-    text-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
-}
-
-.editorial-desc {
-    max-width: 600px;
-    margin: 0 auto 50px;
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.9);
-    line-height: 1.5;
-}
-
-/* THE COLLAGE (Fan Effect) */
-.collage-wrapper {
+/* 3D Wrapper */
+.collage-wrapper3d {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 600px;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Aligns items to bottom */
+    align-items: center;
+    perspective: 1000px; /* Essential for Z-axis effect */
+    transform-style: preserve-3d;
 }
 
-/* The Cards Behind */
-.fan-card {
+/* Video Fan Cards */
+.video-card {
     position: absolute;
-    top: 50px;
-    width: 160px;
-    height: 280px;
-    border: 2px solid white;
-    filter: grayscale(100%);
-    transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    width: 180px;
+    height: 300px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    background: #000;
 }
 
-.fan-card img { width: 100%; height: 100%; object-fit: cover; }
-
-/* Rotations for the "Fan" */
-.pos-1 { transform: translateX(-180px) rotate(-15deg) translateY(20px); z-index: 1; }
-.pos-2 { transform: translateX(-70px) rotate(-5deg); z-index: 2; }
-.pos-3 { transform: translateX(70px) rotate(5deg); z-index: 2; }
-.pos-4 { transform: translateX(180px) rotate(15deg) translateY(20px); z-index: 1; }
-
-/* Interactive Hover: Fan spreads out */
-.collage-wrapper:hover .pos-1 { transform: translateX(-220px) rotate(-20deg); }
-.collage-wrapper:hover .pos-2 { transform: translateX(-90px) rotate(-10deg); }
-.collage-wrapper:hover .pos-3 { transform: translateX(90px) rotate(10deg); }
-.collage-wrapper:hover .pos-4 { transform: translateX(220px) rotate(20deg); }
-
-/* Main Subject (Foreground) */
-.main-subject {
-    position: relative;
-    z-index: 10;
-    width: 350px;
-    height: 400px; /* Adjust height based on your image */
-    overflow: visible;
-    transform: translateY(50px); /* Pushes it down slightly */
-}
-
-.main-subject img {
+.video-card video {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Change to 'contain' if using a transparent PNG cutout */
-    border-radius: 20px; /* Optional: remove if using a cutout */
-    filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
+    object-fit: cover;
+    opacity: 0.6;
     transition: 0.3s;
 }
 
-.main-subject:hover img { transform: scale(1.05); }
+/* Positions for Fan */
+.pos-1 { left: 20%; top: 10%; transform: rotate(-15deg); z-index: 1; }
+.pos-2 { left: 35%; top: 5%; transform: rotate(-5deg); z-index: 2; }
+.pos-3 { right: 35%; top: 5%; transform: rotate(5deg); z-index: 2; }
+.pos-4 { right: 20%; top: 10%; transform: rotate(15deg); z-index: 1; }
 
-/* Footer Labels */
-.story-ui-footer {
-    display: flex;
-    justify-content: space-between;
+/* Main Subject (Center) */
+.main-subject-3d {
+    position: relative;
+    z-index: 10;
+    width: 320px;
+    height: 450px;
+    filter: drop-shadow(0 0 50px rgba(0,0,0,0.8));
+}
+
+.main-subject-3d img {
     width: 100%;
-    margin-top: 20px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 /* Mobile Adjustments */
-@media (max-width: 768px) {
-    .editorial-title { font-size: 3rem; }
-    .fan-card { width: 100px; height: 180px; top: 100px; }
-    .pos-1 { transform: translateX(-100px) rotate(-15deg); }
-    .pos-2 { transform: translateX(-40px) rotate(-5deg); }
-    .pos-3 { transform: translateX(40px) rotate(5deg); }
-    .pos-4 { transform: translateX(100px) rotate(15deg); }
-    .main-subject { width: 250px; height: 300px; }
-    .center-text { display: none; } /* Hide center text on small screens */
+@media (max-width: 991px) {
+    .collage-wrapper3d { height: 400px; }
+    .video-card { width: 100px; height: 160px; opacity: 0.5; }
+    .pos-1 { left: 5%; }
+    .pos-4 { right: 5%; }
+    .main-subject-3d { width: 200px; height: 280px; }
 }
