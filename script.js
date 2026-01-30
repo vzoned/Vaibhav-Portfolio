@@ -128,7 +128,7 @@ if (editorialSection && collageWrapper) {
 ===================== */
 
 (function () {
-    const startDate = new Date("2023-08-01"); // your career start
+    const startDate = new Date("2022-11-22"); // your career start
     const now = new Date();
 
     const months =
