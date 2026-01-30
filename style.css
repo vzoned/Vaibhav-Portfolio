@@ -536,3 +536,27 @@ section { transition: filter 0.5s ease; }
     .pos-4 { right: 5%; }
     .main-subject-3d { width: 200px; height: 280px; }
 }
+
+/* EXPERIENCE BADGE */
+.exp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    border: 1px solid var(--vz-border);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    margin: 14px 0 18px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(10px);
+    opacity: 0.9;
+}
+
+.exp-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00ff88;
+    box-shadow: 0 0 8px #00ff88;
+}
