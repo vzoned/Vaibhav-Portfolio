@@ -122,3 +122,19 @@ if (editorialSection && collageWrapper) {
         }
     });
 }
+
+/* =====================
+   EXPERIENCE COUNTER
+===================== */
+
+(function () {
+    const startDate = new Date("2023-08-01"); // your career start
+    const now = new Date();
+
+    const months =
+        (now.getFullYear() - startDate.getFullYear()) * 12 +
+        (now.getMonth() - startDate.getMonth());
+
+    const el = document.getElementById("exp-counter");
+    if (el) el.innerText = months;
+})();
