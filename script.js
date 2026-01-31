@@ -158,3 +158,86 @@ document.querySelectorAll(".magnetic-btn").forEach(btn => {
     });
 
 });
+/* =========================
+OPEN CLOSE
+========================= */
+
+const openBtn = document.getElementById("openReels");
+const closeBtn = document.getElementById("closeReels");
+const overlay = document.querySelector(".reel-overlay");
+
+openBtn.onclick = () => {
+    overlay.classList.add("active");
+    document.body.classList.add("reel-open");
+};
+
+closeBtn.onclick = closeReels;
+
+function closeReels(){
+    overlay.classList.remove("active");
+    document.body.classList.remove("reel-open");
+}
+
+document.addEventListener("keydown", e=>{
+    if(e.key==="Escape") closeReels();
+});
+
+
+/* =========================
+RANDOM SHUFFLE
+========================= */
+
+const container = document.getElementById("reelContainer");
+
+const items = Array.from(container.children);
+
+items
+.sort(()=>Math.random()-0.5)
+.forEach(el=>container.appendChild(el));
+
+
+/* =========================
+AUTOPLAY CURRENT VIDEO
+========================= */
+
+const videos = document.querySelectorAll(".reel video");
+
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        const vid = entry.target;
+        if(entry.isIntersecting){
+            vid.play();
+        } else {
+            vid.pause();
+        }
+    });
+},{threshold:0.7});
+
+videos.forEach(v=>observer.observe(v));
+
+
+/* =========================
+LIKE SYSTEM
+========================= */
+
+document.querySelectorAll(".like-btn").forEach(btn=>{
+    btn.onclick = ()=> btn.classList.toggle("active");
+});
+
+
+/* =========================
+CREATE THIS → MAIL
+========================= */
+
+document.querySelectorAll(".create-btn").forEach(btn=>{
+    btn.onclick = e=>{
+        const reel = e.target.closest(".reel");
+        const link = reel.dataset.link;
+
+        const subject = encodeURIComponent("want to create this");
+        const body = encodeURIComponent("Video reference:\n" + link);
+
+        window.location.href =
+        `https://mail.google.com/mail/?view=cm&fs=1&to=patilvaibhav5619@gmail.com&su=${subject}&body=${body}`;
+    };
+});
