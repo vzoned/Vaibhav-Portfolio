@@ -643,10 +643,10 @@ REEL CONTAINER
     scroll-snap-align: start;
 }
 
-.reel video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.reel iframe{
+    width:100%;
+    height:100%;
+    border:none;
 }
 
 
