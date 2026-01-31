@@ -158,79 +158,64 @@ document.querySelectorAll(".magnetic-btn").forEach(btn => {
     });
 
 });
-/* =========================
-OPEN CLOSE
-========================= */
+/* ====================
+ REEL SYSTEM WORKING
+==================== */
 
 const openBtn = document.getElementById("openReels");
 const closeBtn = document.getElementById("closeReels");
-const overlay = document.querySelector(".reel-overlay");
+const overlay = document.getElementById("reels");
+const reelContainer = document.getElementById("reelContainer");
 
+// Open / Close logic
 openBtn.onclick = () => {
     overlay.classList.add("active");
     document.body.classList.add("reel-open");
 };
 
-closeBtn.onclick = closeReels;
-
-function closeReels(){
+closeBtn.onclick = () => {
     overlay.classList.remove("active");
     document.body.classList.remove("reel-open");
-}
+};
 
-document.addEventListener("keydown", e=>{
-    if(e.key==="Escape") closeReels();
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+        overlay.classList.remove("active");
+        document.body.classList.remove("reel-open");
+    }
 });
 
+// Shuffle on open
+const reels = Array.from(reelContainer.children);
 
-/* =========================
-RANDOM SHUFFLE
-========================= */
+reels.sort(() => Math.random() - 0.5)
+     .forEach(r => reelContainer.appendChild(r));
 
-const container = document.getElementById("reelContainer");
+// Autoplay logic
+const reelVideos = document.querySelectorAll(".reel-video");
 
-const items = Array.from(container.children);
-
-items
-.sort(()=>Math.random()-0.5)
-.forEach(el=>container.appendChild(el));
-
-
-/* =========================
-AUTOPLAY CURRENT VIDEO
-========================= */
-
-const videos = document.querySelectorAll(".reel video");
-
-const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
         const vid = entry.target;
-        if(entry.isIntersecting){
+        if (entry.isIntersecting) {
             vid.play();
         } else {
             vid.pause();
+            vid.currentTime = 0;
         }
     });
-},{threshold:0.7});
+}, { threshold: 0.75 });
 
-videos.forEach(v=>observer.observe(v));
+reelVideos.forEach(v => observer.observe(v));
 
-
-/* =========================
-LIKE SYSTEM
-========================= */
-
-document.querySelectorAll(".like-btn").forEach(btn=>{
-    btn.onclick = ()=> btn.classList.toggle("active");
+// Like buttons
+document.querySelectorAll(".like-btn").forEach(btn => {
+    btn.onclick = () => btn.classList.toggle("active");
 });
 
-
-/* =========================
-CREATE THIS → MAIL
-========================= */
-
-document.querySelectorAll(".create-btn").forEach(btn=>{
-    btn.onclick = e=>{
+// Create This mail logic
+document.querySelectorAll(".create-btn").forEach(btn => {
+    btn.onclick = e => {
         const reel = e.target.closest(".reel");
         const link = reel.dataset.link;
 
@@ -238,6 +223,6 @@ document.querySelectorAll(".create-btn").forEach(btn=>{
         const body = encodeURIComponent("Video reference:\n" + link);
 
         window.location.href =
-        `https://mail.google.com/mail/?view=cm&fs=1&to=patilvaibhav5619@gmail.com&su=${subject}&body=${body}`;
+          `https://mail.google.com/mail/?view=cm&fs=1&to=patilvaibhav5619@gmail.com&su=${subject}&body=${body}`;
     };
 });
