@@ -566,3 +566,137 @@ section { transition: filter 0.5s ease; }
     transition: transform 0.2s ease;
     will-change: transform;
 }
+/* =========================
+FLOATING BUTTON
+========================= */
+
+.reel-fab {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 9999;
+
+    padding: 14px 20px;
+    border-radius: 50px;
+
+    background: linear-gradient(135deg,#9d50bb,#6e38ff);
+    color: #fff;
+    border: none;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    cursor: pointer;
+
+    box-shadow: 0 10px 40px rgba(157,80,187,.45);
+}
+
+.reel-fab:hover {
+    transform: scale(1.1);
+}
+
+
+/* =========================
+OVERLAY
+========================= */
+
+.reel-overlay {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 9000;
+
+    transform: translateY(100%);
+    transition: .6s cubic-bezier(.2,.8,.2,1);
+    pointer-events: none;
+}
+
+.reel-overlay.active {
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* blur background */
+body.reel-open > *:not(.reel-overlay):not(.reel-fab) {
+    filter: blur(18px) brightness(.5);
+    pointer-events: none;
+}
+
+
+/* =========================
+REEL CONTAINER
+========================= */
+
+.reel-container {
+    height: 100%;
+    overflow-y: scroll;
+
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.reel {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+
+    scroll-snap-align: start;
+}
+
+.reel video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* =========================
+UI
+========================= */
+
+.reel-ui {
+    position: absolute;
+    bottom: 90px;
+    right: 25px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.like-btn,
+.create-btn {
+    background: rgba(0,0,0,.5);
+    color: white;
+    border: 1px solid rgba(255,255,255,.2);
+
+    padding: 10px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.like-btn.active {
+    background: #ff2b6a;
+}
+
+
+/* close */
+.reel-close {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+
+/* mobile full takeover */
+@media(max-width:768px){
+    .reel-overlay {
+        transform: translateX(100%);
+    }
+    .reel-overlay.active {
+        transform: translateX(0);
+    }
+}
